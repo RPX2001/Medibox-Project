@@ -13,7 +13,7 @@ Welcome to the MediBox repository! This project aims to provide a smart solution
 
 Here is the circuit setup for the MediBox:
 
-![MediBox Circuit Setup](https://github.com/RPX2001/Medibox-Project/blob/main/image.png)
+![MediBox Circuit Setup](https://github.com/RPX2001/Medibox-Project/blob/main/wokwi_circuit.png)
 
 ## Functionality
 
@@ -21,6 +21,10 @@ Here is the circuit setup for the MediBox:
 - **Set Alarms:** Up to 3 alarms can be set for medicine reminders. Users can adjust the alarm times using the push buttons.
 - **Temperature and Humidity Monitoring:** The DHT22 sensor continuously monitors the temperature and humidity levels inside the MediBox. If the levels are outside the specified range, appropriate alerts are displayed.
 - **Node-RED Dashboard Integration:** Data from the MediBox, including temperature and humidity readings, are sent to the Node-RED dashboard using MQTT protocol. Users can visualize the data and adjust the light condition in the MediBox as needed through the dashboard.
+
+## Node Red Dashboard Design
+
+![Node Red Dashboard design](https://github.com/RPX2001/Medibox-Project/blob/main/nodered%20dash%20board.png)
 
 ## Repository Structure
 
