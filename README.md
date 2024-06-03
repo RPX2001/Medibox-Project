@@ -9,6 +9,12 @@ Welcome to the MediBox repository! This project aims to provide a smart solution
 - **OLED Display:** Provides visual feedback to the user, displaying information such as current time, set alarms, and environmental data.
 - **Push Buttons:** Used for user interaction, allowing users to set time, alarms, and navigate through the menu.
 
+## MediBox Circuit Setup
+
+Here is the circuit setup for the MediBox:
+
+![MediBox Circuit Setup](https://github.com/RPX2001/Medibox-Project/blob/main/image.png)
+
 ## Functionality
 
 - **Set Time:** Users can set the current time using the push buttons.
