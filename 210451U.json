@@ -1,0 +1,713 @@
+[
+    {
+        "id": "38e40d9e048b704a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d8c1874c9d386ffd",
+        "type": "mqtt in",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "topic": "LDR_left",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0e10d707add96501",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "6aca7b41802236eb"
+            ]
+        ]
+    },
+    {
+        "id": "73012d8b0ec6fd82",
+        "type": "mqtt in",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "topic": "LDR_right",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "0e10d707add96501",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "76b8983498ee8178"
+            ]
+        ]
+    },
+    {
+        "id": "6aca7b41802236eb",
+        "type": "delay",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "993a91a57678c9fe"
+            ]
+        ]
+    },
+    {
+        "id": "76b8983498ee8178",
+        "type": "delay",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 120,
+        "wires": [
+            [
+                "b1c3aa8eb24a5036"
+            ]
+        ]
+    },
+    {
+        "id": "993a91a57678c9fe",
+        "type": "function",
+        "z": "38e40d9e048b704a",
+        "name": "Left",
+        "func": "return{payload: msg.payload};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 60,
+        "wires": [
+            [
+                "2a19af05434b1851",
+                "80e53d4d9a48d9b9"
+            ]
+        ]
+    },
+    {
+        "id": "b1c3aa8eb24a5036",
+        "type": "function",
+        "z": "38e40d9e048b704a",
+        "name": "Right",
+        "func": "return{\n    payload:msg.payload\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 120,
+        "wires": [
+            [
+                "2a19af05434b1851",
+                "80e53d4d9a48d9b9"
+            ]
+        ]
+    },
+    {
+        "id": "2a19af05434b1851",
+        "type": "ui_chart",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "group": "4814d148e8407761",
+        "order": 12,
+        "width": 0,
+        "height": 0,
+        "label": "Intensity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "60",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "97c10ba27c0bf263",
+        "type": "ui_text",
+        "z": "38e40d9e048b704a",
+        "group": "4814d148e8407761",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "HIGHEST INTENSITY ",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": "18",
+        "color": "#2bcdee",
+        "x": 1180,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "80e53d4d9a48d9b9",
+        "type": "function",
+        "z": "38e40d9e048b704a",
+        "name": "highest intensity",
+        "func": "let str1 = msg.payload.left;\n//let left = parseInt(str1);\nlet str2 = msg.payload.right;\n//let right = parseInt(str2);\nlet source = '';\n\nif(str1>str2){\n    flow.set('Left LDR');\n    return {\n        payload: str1\n    };\n}\nelse{\n    flow.set('Left LDR');\n    return{\n        payload: str2\n    }\n}\n\n\n//return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 60,
+        "wires": [
+            [
+                "97c10ba27c0bf263",
+                "ce25601b0994d4e9"
+            ]
+        ]
+    },
+    {
+        "id": "ce25601b0994d4e9",
+        "type": "ui_gauge",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "group": "4814d148e8407761",
+        "order": 2,
+        "width": 5,
+        "height": 4,
+        "gtype": "gage",
+        "title": "MAX LIGHT INTENSITY",
+        "label": "units",
+        "format": "{{msg.payload}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1170,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2c8584cd791cd7e3",
+        "type": "ui_slider",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "label": "MIN_ANGLE",
+        "tooltip": "",
+        "group": "a98d55c91fc0c3a5",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "outs": "all",
+        "topic": "payload",
+        "topicType": "msg",
+        "min": "0",
+        "max": "120",
+        "step": 1,
+        "className": "",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "3a54a7519e76ef27"
+            ]
+        ]
+    },
+    {
+        "id": "adf236a28cb4a054",
+        "type": "ui_slider",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "label": "CONTROL_FACTOR",
+        "tooltip": "",
+        "group": "a98d55c91fc0c3a5",
+        "order": 6,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "outs": "all",
+        "topic": "payload",
+        "topicType": "msg",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 200,
+        "y": 380,
+        "wires": [
+            [
+                "0fb182e2b6bb9f39"
+            ]
+        ]
+    },
+    {
+        "id": "a274841e4e5f87e3",
+        "type": "ui_dropdown",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "label": "OPTIONS",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "a98d55c91fc0c3a5",
+        "order": 10,
+        "width": 5,
+        "height": 3,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Paracitamol",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Panadene",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "Cetracine",
+                "value": 3,
+                "type": "num"
+            },
+            {
+                "label": "Panadol",
+                "value": 4,
+                "type": "num"
+            },
+            {
+                "label": "Custom",
+                "value": 5,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "payload",
+        "topicType": "msg",
+        "className": "",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "3a54a7519e76ef27",
+                "0fb182e2b6bb9f39"
+            ]
+        ]
+    },
+    {
+        "id": "3a54a7519e76ef27",
+        "type": "function",
+        "z": "38e40d9e048b704a",
+        "name": "Angle",
+        "func": "let minAng = msg.payload.MIN_ANGLE;\n//let gamma = global.get(\"gamma\");\nlet input = msg.payload;\nlet ang = 0;\nif(input == \"1\"){\n    ang = 10;\n}\nelse if(input == \"2\"){\n    ang = 20;\n}\nelse if(input == \"3\"){\n    ang = 30;\n}\nelse if(input == \"4\"){\n    ang = 40;\n}\nelse{\n    ang = minAng;\n}\n\nreturn {payload: ang};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 480,
+        "wires": [
+            [
+                "8b1892d9922b4592"
+            ]
+        ]
+    },
+    {
+        "id": "0fb182e2b6bb9f39",
+        "type": "function",
+        "z": "38e40d9e048b704a",
+        "name": "Control Factor",
+        "func": "//let minAng = global.get(\"minAngle\");\nlet gamma = msg.payload.CONTROL_FACTOR;\nlet input = msg.payload;\nlet g = 0; // gamma\nif (input == \"1\") {\n    g = 0.10;\n}\nelse if (input == \"2\") {\n    g = 0.20;\n}\nelse if (input == \"3\") {\n    g = 0.30;\n}\nelse if (input == \"4\") {\n    g = 0.40;\n}\nelse {\n    g = 0.50;\n}\nreturn { payload: g };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "1ab685797d4505bc"
+            ]
+        ]
+    },
+    {
+        "id": "1ab685797d4505bc",
+        "type": "mqtt out",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "topic": "control_factor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0e10d707add96501",
+        "x": 1200,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8b1892d9922b4592",
+        "type": "mqtt out",
+        "z": "38e40d9e048b704a",
+        "name": "",
+        "topic": "angle",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "0e10d707add96501",
+        "x": 1190,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "44f73a95a9c9cd78",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 1,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "da2298a58062af22",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 3,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cfc5110d77b29b84",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 4,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "da26bbeb135b0e41",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 5,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "d8cebdd4553414f9",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "63abc07bfcf91012",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "90543260d1d9b567",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 8,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "dc267757834bd1f6",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "661c496d8073a64b",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "4814d148e8407761",
+        "order": 11,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "c5e11088fc8211bb",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b57b727e76e3585a",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "e56ade34105a1b04",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 4,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "8bf22cbb81d117d6",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "684aef88f88f83bf",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 7,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "32be389181db4298",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 8,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "f196f55275b43752",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "bc38278b442344b2",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 11,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "384da74201de5e37",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "21c0d0018d43c4b5",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 13,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "8f9e6336ec92f53d",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "018e01456c8c3d9c",
+        "type": "ui_spacer",
+        "z": "38e40d9e048b704a",
+        "name": "spacer",
+        "group": "a98d55c91fc0c3a5",
+        "order": 15,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0e10d707add96501",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "https://test.mosquitto.org/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4814d148e8407761",
+        "type": "ui_group",
+        "name": "LDR INTENSITY",
+        "tab": "babfab08c4ed1e06",
+        "order": 1,
+        "disp": true,
+        "width": 9,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a98d55c91fc0c3a5",
+        "type": "ui_group",
+        "name": "SERVO CONTROL",
+        "tab": "babfab08c4ed1e06",
+        "order": 2,
+        "disp": true,
+        "width": 7,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "babfab08c4ed1e06",
+        "type": "ui_tab",
+        "name": "MediBox",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
